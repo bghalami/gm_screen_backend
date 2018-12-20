@@ -1,36 +1,48 @@
-____ Wrote Tests
-____ Implemented 
-____ Reviewed
-# Neccesary checkmarks:
-- [] All Tests are Passing
+# Sample PR template
 
-- [] The code will run locally
+## Description:
 
-## Type of change
-- [] New feature 
-- [] Bug Fix
+This PR addresses issue #`<NUMBER>`.
 
-# Implements/Fixes:
-* description
-closes #
+_If relevant, include screenshots of the *before* state of the application/test suite/whatever, which demonstrates the issue needing to be fixed._
 
-# Check the correct boxes
+**Before:**
 
-- [] This broke nothing
-- [] This broke some stuff
-- [] This broke everything
+`![semantic description of "before" screenshot](link to screenshot hosted somewhere stable like imgur, etc)`
 
-# Testing Changes
-- [] No Tests have been changed
-- [] Some Tests have been changed
-- [] All of the Tests have been changed(Please describe what in the world happened)
+The changes made to the codebase in this PR:
 
-# Checklist:
+* List the changes made
+  * as specifically as possible.
+* Assume that the reader
+  * is not familiar with the entire codebase
 
-- [] My code has no unused/commented out code
-- [] I have reviewed my code
-- [] I have commented my code, particularly in hard-to-understand areas
-- [] I have fully tested my code
+```
+Include relevant code snippets if applicable - do not paste in the entire PR's changes;
+merely highlight some key changes if they are unusual or especially relevant.
+```
+**After:**
 
-# Please Include a link to a gif of your feelings about this branch
-Link: 
+`![semantic description of "after" screenshot](link to screenshot hosted somewhere stable like imgur, etc)`
+
+## Testing 
+
+These changes affect the following tests:
+
+`![Screenshot of test suite output](link to screenshot hosted somewhere stable like imgur, etc)`
+
+As a result, issue #`<NUMBER>` was created to refactor those tests: `[Issue #<NUMBER>](link to the github/waffle/etc issue)`
+
+_ALTERNATIVELY, if no tests are adversely affected:_
+
+These changes did not affect the existing test suite.
+
+`![Screenshot of unaffected "after" test suite output](link to screenshot hosted somewhere stable like imgur, etc)`
+
+## Requests for review
+
+Areas of concern:
+
+* List areas you would like reviewers to focus on
+* Ex: The function beginning on line 72 is not pure; would love to have suggestions for improvement
+* This is your opportunity to solicit particular attention for areas of code you are concerned about
