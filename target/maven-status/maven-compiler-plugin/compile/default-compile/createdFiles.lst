@@ -1,2 +1,6 @@
+com/model/GameMaster.class
 com/repository/GameMasterRepository.class
 com/model/AuditModel.class
+com/exception/ResourceNotFoundException.class
+com/GmScreenBackendApplication.class
+com/controller/GameMasterController.class
