@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CampaignController {
@@ -25,48 +26,58 @@ public class CampaignController {
     @Autowired
     private GameMasterRepository gameMasterRepository;
 
-    @GetMapping("/game_masters/{gameMasterId}/campaigns")
-    public List<Answer> getAnswersByQuestionId(@PathVariable Long questionId) {
-        return answerRepository.findByQuestionId(questionId);
+    @GetMapping("/api/v1/game_masters/{gameMasterId}/campaigns")
+    public List<Campaign> getCampaignsByGameMasterId(@PathVariable Long gameMasterId) {
+        return campaignRepository.findByGameMasterId(gameMasterId);
     }
 
-    @PostMapping("/questions/{questionId}/answers")
-    public Answer addAnswer(@PathVariable Long questionId,
-                            @Valid @RequestBody Answer answer) {
-        return questionRepository.findById(questionId)
-                .map(question -> {
-                    answer.setQuestion(question);
-                    return answerRepository.save(answer);
-                }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + questionId));
+    @PostMapping("/api/v1/game_masters/{gameMasterId}/campaigns")
+    public Campaign addCampaign(@PathVariable Long gameMasterId,
+                            @Valid @RequestBody Campaign campaign) {
+        return gameMasterRepository.findById(gameMasterId)
+                .map(gameMaster -> {
+                    campaign.setGameMaster(gameMaster);
+                    return campaignRepository.save(campaign);
+                }).orElseThrow(() -> new ResourceNotFoundException("GM not found with id " + gameMasterId));
+    }
+    
+    @GetMapping("/api/v1/game_masters/{gameMasterId}/campaigns/{campaignId}")
+    public Optional<Campaign> getCampaign(@PathVariable Long gameMasterId, 
+                                        @PathVariable Long campaignId) {
+        if(!gameMasterRepository.existsById(gameMasterId)) {
+            throw new ResourceNotFoundException("GM not found with id " + gameMasterId);
+        }
+        
+        return campaignRepository.findById(campaignId);
     }
 
-    @PutMapping("/questions/{questionId}/answers/{answerId}")
-    public Answer updateAnswer(@PathVariable Long questionId,
-                               @PathVariable Long answerId,
-                               @Valid @RequestBody Answer answerRequest) {
-        if(!questionRepository.existsById(questionId)) {
-            throw new ResourceNotFoundException("Question not found with id " + questionId);
+    @PutMapping("/api/v1/game_masters/{gameMasterId}/campaigns/{campaignId}")
+    public Campaign updateCampaign(@PathVariable Long gameMasterId,
+                               @PathVariable Long campaignId,
+                               @Valid @RequestBody Campaign campaignRequest) {
+        if(!gameMasterRepository.existsById(gameMasterId)) {
+            throw new ResourceNotFoundException("GM not found with id " + gameMasterId);
         }
 
-        return answerRepository.findById(answerId)
-                .map(answer -> {
-                    answer.setText(answerRequest.getText());
-                    return answerRepository.save(answer);
-                }).orElseThrow(() -> new ResourceNotFoundException("Answer not found with id " + answerId));
+        return campaignRepository.findById(campaignId)
+                .map(campaign -> {
+                    campaign.setTitle(campaignRequest.getTitle());
+                    return campaignRepository.save(campaign);
+                }).orElseThrow(() -> new ResourceNotFoundException("Campaign not found with id " + campaignId));
     }
 
-    @DeleteMapping("/questions/{questionId}/answers/{answerId}")
-    public ResponseEntity<?> deleteAnswer(@PathVariable Long questionId,
-                                          @PathVariable Long answerId) {
-        if(!questionRepository.existsById(questionId)) {
-            throw new ResourceNotFoundException("Question not found with id " + questionId);
+    @DeleteMapping("/api/v1/game_masters/{gameMasterId}/campaigns/{campaignId}")
+    public ResponseEntity<?> deleteCampaign(@PathVariable Long gameMasterId,
+                                          @PathVariable Long campaignId) {
+        if(!gameMasterRepository.existsById(gameMasterId)) {
+            throw new ResourceNotFoundException("GM not found with id " + gameMasterId);
         }
 
-        return answerRepository.findById(answerId)
-                .map(answer -> {
-                    answerRepository.delete(answer);
+        return campaignRepository.findById(campaignId)
+                .map(campaign -> {
+                    campaignRepository.delete(campaign);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Answer not found with id " + answerId));
+                }).orElseThrow(() -> new ResourceNotFoundException("Campaign not found with id " + campaignId));
 
     }
 }
