@@ -26,22 +26,22 @@ public class GameMasterController {
      @Autowired
      private GameMasterRepository gameMasterRepository;
      
-     @GetMapping("/game_masters")
+     @GetMapping("/api/v1/game_masters")
      public Page<GameMaster> getGameMasters(Pageable pageable) {
          return gameMasterRepository.findAll(pageable);
      }
      
-     @GetMapping("/game_masters/{gameMasterId}")
+     @GetMapping("/api/v1/game_masters/{gameMasterId}")
     public Optional<GameMaster> getGameMaster(@PathVariable Long gameMasterId) {
         return gameMasterRepository.findById(gameMasterId);
     }
     
-    @PostMapping("/game_masters")
+    @PostMapping("/api/v1/game_masters")
     public GameMaster createGameMaster(@Valid @RequestBody GameMaster gameMaster) {
         return (GameMaster) gameMasterRepository.save(gameMaster);
     }
     
-    @PutMapping("/game_masters/{gameMasterId}")
+    @PutMapping("/api/v1/game_masters/{gameMasterId}")
     public GameMaster updateGameMaster(@PathVariable Long gameMasterId,
                                        @Valid @RequestBody GameMaster gameMasterRequest) {
         return gameMasterRepository.findById(gameMasterId)
@@ -51,7 +51,7 @@ public class GameMasterController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + gameMasterId));
     }
     
-    @DeleteMapping("/game_masters/{gameMasterId}")
+    @DeleteMapping("/api/v1/game_masters/{gameMasterId}")
     public ResponseEntity<?> deleteGameMaster(@PathVariable Long gameMasterId) {
         return gameMasterRepository.findById(gameMasterId)
                 .map(gameMaster -> {
