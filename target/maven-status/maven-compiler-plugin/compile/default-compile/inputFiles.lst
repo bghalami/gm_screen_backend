@@ -1,6 +1,9 @@
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/AuditModel.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Campaign.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/GmScreenBackendApplication.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/GameMasterRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/GameMasterController.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/CampaignRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/exception/ResourceNotFoundException.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/GameMaster.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/CampaignController.java
