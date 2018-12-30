@@ -8,10 +8,9 @@ package com.controller;
 import com.exception.ResourceNotFoundException;
 import com.model.GameMaster;
 import com.repository.GameMasterRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -27,8 +26,8 @@ public class GameMasterController {
      private GameMasterRepository gameMasterRepository;
      
      @GetMapping("/api/v1/game_masters")
-     public Page<GameMaster> getGameMasters(Pageable pageable) {
-         return gameMasterRepository.findAll(pageable);
+     public List<GameMaster> getGameMasters() {
+         return gameMasterRepository.findAll();
      }
      
      @GetMapping("/api/v1/game_masters/{gameMasterId}")
