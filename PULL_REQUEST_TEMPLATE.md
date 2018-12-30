@@ -1,48 +1,37 @@
-# Sample PR template
+____ Wrote Tests
+____ Implemented
+____ Reviewed
 
-## Description:
 
-This PR addresses issue #`<NUMBER>`.
+# Neccesary checkmarks:
+- [] All Tests are Passing
 
-_If relevant, include screenshots of the *before* state of the application/test suite/whatever, which demonstrates the issue needing to be fixed._
+- [] The code will run locally
 
-**Before:**
+## Type of change
+- [] New feature
+- [] Bug Fix
 
-`![semantic description of "before" screenshot](link to screenshot hosted somewhere stable like imgur, etc)`
+# Implements/Fixes:
+* description
+closes story #
 
-The changes made to the codebase in this PR:
+# Check the correct boxes
 
-* List the changes made
-  * as specifically as possible.
-* Assume that the reader
-  * is not familiar with the entire codebase
+- [] This broke nothing
+- [] This broke some stuff
+- [] This broke everything
 
-```
-Include relevant code snippets if applicable - do not paste in the entire PR's changes;
-merely highlight some key changes if they are unusual or especially relevant.
-```
-**After:**
+# Testing Changes
+- [] No Tests have been changed
+- [] Some Tests have been changed
+- [] All of the Tests have been changed(Please describe what in the world happened)
 
-`![semantic description of "after" screenshot](link to screenshot hosted somewhere stable like imgur, etc)`
+# Checklist:
 
-## Testing 
+- [] My code has no unused/commented out code
+- [] I have reviewed my code
+- [] I have commented my code, particularly in hard-to-understand areas
+- [] I have fully tested my code
 
-These changes affect the following tests:
-
-`![Screenshot of test suite output](link to screenshot hosted somewhere stable like imgur, etc)`
-
-As a result, issue #`<NUMBER>` was created to refactor those tests: `[Issue #<NUMBER>](link to the github/waffle/etc issue)`
-
-_ALTERNATIVELY, if no tests are adversely affected:_
-
-These changes did not affect the existing test suite.
-
-`![Screenshot of unaffected "after" test suite output](link to screenshot hosted somewhere stable like imgur, etc)`
-
-## Requests for review
-
-Areas of concern:
-
-* List areas you would like reviewers to focus on
-* Ex: The function beginning on line 72 is not pure; would love to have suggestions for improvement
-* This is your opportunity to solicit particular attention for areas of code you are concerned about
+# Please include a link to a gif of how you feel about this branch:
