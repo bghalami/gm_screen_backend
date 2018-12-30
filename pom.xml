@@ -52,6 +52,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
                         <plugin>
+                                <version>3.1</version>
                                 <groupId>org.liquibase</groupId>
                                 <artifactId>liquibase-maven-plugin</artifactId>
                                 <configuration>

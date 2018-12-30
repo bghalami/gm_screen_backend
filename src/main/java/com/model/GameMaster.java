@@ -21,7 +21,7 @@ public class GameMaster extends AuditModel {
     @SequenceGenerator(
             name = "game_master_generator",
             sequenceName = "game_master_sequence",
-            initialValue = 1000
+            initialValue = 1
     )
     protected Long id;
 
