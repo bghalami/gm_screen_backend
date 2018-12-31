@@ -17,4 +17,5 @@ import java.util.List;
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Long> {
 //    List<Character> findByEncounterId(Long encounterId);
+    Character getByCharacterCode(String characterCode); 
 }
