@@ -36,6 +36,11 @@ public class CharacterController {
         return characterRepository.findById(characterId);
     }
     
+     @GetMapping("/api/v1/characters/play_code/{characterCode}")
+    public Character getCharacter(@PathVariable String characterCode) {
+        return characterRepository.getByCharacterCode(characterCode);
+    }
+    
     @PostMapping("/api/v1/characters")
     public Character createCharacter(@Valid @RequestBody Character character) {
          Character newChar = characterRepository.save(character);
