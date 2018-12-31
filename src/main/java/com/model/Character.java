@@ -6,8 +6,7 @@
 package com.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import org.apache.commons.text.RandomStringGenerator;
 /**
  *
  * @author bghalami
@@ -35,10 +34,6 @@ public class Character extends AuditModel {
      public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
     
     public String getName() {
         return name;
@@ -62,6 +57,11 @@ public class Character extends AuditModel {
 
     public void setCreated(Integer created) {
         this.created = created;
+    }
+    
+    public String generateCharCode() {
+         String string = "Ben";
+         return string;
     }
     
 }

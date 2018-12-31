@@ -47,7 +47,7 @@ public class GameMasterController {
                 .map(gameMaster -> {
                     gameMaster.setName(gameMasterRequest.getName());
                     return gameMasterRepository.save(gameMaster);
-                }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + gameMasterId));
+                }).orElseThrow(() -> new ResourceNotFoundException("GM not found with id " + gameMasterId));
     }
     
     @DeleteMapping("/api/v1/game_masters/{gameMasterId}")
@@ -56,6 +56,6 @@ public class GameMasterController {
                 .map(gameMaster -> {
                     gameMasterRepository.delete(gameMaster);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + gameMasterId));
+                }).orElseThrow(() -> new ResourceNotFoundException("GM not found with id " + gameMasterId));
     }
 }
