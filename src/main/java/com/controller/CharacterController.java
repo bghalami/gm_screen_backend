@@ -38,6 +38,10 @@ public class CharacterController {
     
      @GetMapping("/api/v1/characters/play_code/{characterCode}")
     public Character getCharacter(@PathVariable String characterCode) {
+        Character character = characterRepository.getByCharacterCode(characterCode);
+        if(character == null) {
+            throw new ResourceNotFoundException("Character not found with code " + characterCode);
+        }
         return characterRepository.getByCharacterCode(characterCode);
     }
     
