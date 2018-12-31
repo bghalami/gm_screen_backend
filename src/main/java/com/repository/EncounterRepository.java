@@ -16,5 +16,5 @@ import java.util.List;
  */
 @Repository
 public interface EncounterRepository extends JpaRepository<Encounter, Long> {
-    List<Encounter> findByCampaignrId(Long campaignId);
+    List<Encounter> findByCampaignId(Long campaignId);
 }
