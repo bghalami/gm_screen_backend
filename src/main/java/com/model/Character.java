@@ -61,7 +61,7 @@ public class Character extends AuditModel {
     }
     
     public String generateCharCode() {
-         return RandomStringUtils.random(6);
+         return RandomStringUtils.randomAlphanumeric(6);
     }
     
 }
