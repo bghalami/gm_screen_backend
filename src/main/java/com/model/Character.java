@@ -6,7 +6,8 @@
 package com.model;
 
 import javax.persistence.*;
-import org.apache.commons.text.RandomStringGenerator;
+import org.apache.commons.lang3.*;
+
 /**
  *
  * @author bghalami
@@ -60,8 +61,7 @@ public class Character extends AuditModel {
     }
     
     public String generateCharCode() {
-         String string = "Ben";
-         return string;
+         return RandomStringUtils.random(6);
     }
     
 }
