@@ -1,0 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.controller;
+
+import com.exception.ResourceNotFoundException;
+import com.model.Treasure;
+import com.repository.TreasureRepository;
+import com.repository.CharacterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+
+/**
+ *
+ * @author bghalami
+ */
+@RestController
+public class TreasureController {
+    @Autowired
+    private TreasureRepository treasureRepository;
+    
+    @Autowired
+    private CharacterRepository characterRepository;
+    
+     @PostMapping("/api/v1/characters/{characterId}/treasures")
+    public Treasure addTreasure(@PathVariable Long characterId,
+                                @Valid @RequestBody Treasure treasure
+                                ) {
+        if(!characterRepository.existsById(characterId)) {
+            throw new ResourceNotFoundException("Character not found with id " + characterId);
+        }
+        return characterRepository.findById(characterId)
+                .map(character -> {
+                    treasure.setCharacter(character);
+                    return treasureRepository.save(treasure);
+                }).orElseThrow(() -> new ResourceNotFoundException("Campaign not found with id " + characterId));
+    }
+}

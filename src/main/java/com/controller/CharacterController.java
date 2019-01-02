@@ -36,7 +36,7 @@ public class CharacterController {
         return characterRepository.findById(characterId);
     }
     
-     @GetMapping("/api/v1/characters/play_code/{characterCode}")
+    @GetMapping("/api/v1/characters/play_code/{characterCode}")
     public Character getCharacter(@PathVariable String characterCode) {
         Character character = characterRepository.getByCharacterCode(characterCode);
         if(character == null) {
