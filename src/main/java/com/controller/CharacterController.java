@@ -8,6 +8,7 @@ package com.controller;
 import com.exception.ResourceNotFoundException;
 import com.model.Character;
 import com.repository.CharacterRepository;
+import com.repository.TreasureRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class CharacterController {
      @Autowired
      private CharacterRepository characterRepository;
      
+     @Autowired
+     private TreasureRepository treasureRepository;
+     
      @GetMapping("/api/v1/characters")
      public List<Character> getCharacters() {
          return characterRepository.findAll();
@@ -36,7 +40,7 @@ public class CharacterController {
         return characterRepository.findById(characterId);
     }
     
-     @GetMapping("/api/v1/characters/play_code/{characterCode}")
+    @GetMapping("/api/v1/characters/play_code/{characterCode}")
     public Character getCharacter(@PathVariable String characterCode) {
         Character character = characterRepository.getByCharacterCode(characterCode);
         if(character == null) {

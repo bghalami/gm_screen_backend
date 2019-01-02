@@ -7,6 +7,7 @@ package com.model;
 
 import javax.persistence.*;
 import org.apache.commons.lang3.*;
+import java.util.*;
 
 /**
  *
@@ -31,6 +32,18 @@ public class Character extends AuditModel {
     
     protected Integer created;
     
+    @OneToMany(cascade = CascadeType.ALL,
+               fetch = FetchType.LAZY,
+               mappedBy = "character")
+    private List<Treasure> treasures = new ArrayList<>();
+
+    public List<Treasure> getTreasures() {
+        return treasures;
+    }
+
+    public void setTreasures(List<Treasure> treasures) {
+        this.treasures = treasures;
+    }
 
      public Long getId() {
         return id;
