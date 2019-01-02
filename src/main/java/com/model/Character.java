@@ -7,6 +7,7 @@ package com.model;
 
 import javax.persistence.*;
 import org.apache.commons.lang3.*;
+import java.util.*;
 
 /**
  *
@@ -30,6 +31,12 @@ public class Character extends AuditModel {
     protected String characterCode;
     
     protected Integer created;
+    
+    @OneToMany(cascade = CascadeType.ALL,
+               fetch = FetchType.LAZY,
+               mappedBy = "character")
+    private Set<Treasure> treasures = new HashSet<>();
+
     
 
      public Long getId() {

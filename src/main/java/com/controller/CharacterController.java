@@ -8,6 +8,7 @@ package com.controller;
 import com.exception.ResourceNotFoundException;
 import com.model.Character;
 import com.repository.CharacterRepository;
+import com.repository.TreasureRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class CharacterController {
     
      @Autowired
      private CharacterRepository characterRepository;
+     
+     @Autowired
+     private TreasureRepository treasureRepository;
      
      @GetMapping("/api/v1/characters")
      public List<Character> getCharacters() {
