@@ -65,8 +65,12 @@ public class CharacterController {
                                      @Valid @RequestBody Character characterRequest) {
         return characterRepository.findById(characterId)
                 .map(character -> {
-                    character.setName(characterRequest.getName());
-                    character.setRole(characterRequest.getRole());
+                    if(characterRequest.getName() != null) {
+                      character.setName(characterRequest.getName());
+                    }
+                    if(characterRequest.getRole() != null) {
+                      character.setRole(characterRequest.getRole());
+                    }
                     character.setCreated(1);
                     return characterRepository.save(character);
                 }).orElseThrow(() -> new ResourceNotFoundException("Character not found with id " + characterId));
