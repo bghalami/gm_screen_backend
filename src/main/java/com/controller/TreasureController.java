@@ -50,7 +50,12 @@ public class TreasureController {
         }
         return treasureRepository.findById(treasureId)
                 .map(treasure -> {
-                    treasure.setTitle(treasureRequest.getTitle());
+                    if(treasureRequest.getTitle() != null){
+                      treasure.setTitle(treasureRequest.getTitle());
+                    }
+                    if(treasureRequest.getType() != null){
+                      treasure.setType(treasureRequest.getType());
+                    }
                     return treasureRepository.save(treasure);
                 }).orElseThrow(() -> new ResourceNotFoundException("Treasure not found with id " + treasureId));
     }
