@@ -28,6 +28,8 @@ public class Character extends AuditModel {
     
     protected String name;
     
+    protected String role;
+    
     protected String characterCode;
     
     protected Integer created;
@@ -55,6 +57,14 @@ public class Character extends AuditModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
     public String getCharacterCode() {
