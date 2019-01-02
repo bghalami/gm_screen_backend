@@ -8,7 +8,7 @@ You can use the app in production on [Heroku](https://gm-screen-backend.herokuap
 
 ## Schema
 
-![](https://imgur.com/4jdWUpN)
+![](https://imgur.com/4jdWUpN.jpg)
 
 ## Endpoints
 
