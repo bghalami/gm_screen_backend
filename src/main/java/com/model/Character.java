@@ -35,9 +35,15 @@ public class Character extends AuditModel {
     @OneToMany(cascade = CascadeType.ALL,
                fetch = FetchType.LAZY,
                mappedBy = "character")
-    private Set<Treasure> treasures = new HashSet<>();
+    private List<Treasure> treasures = new ArrayList<>();
 
-    
+    public List<Treasure> getTreasures() {
+        return treasures;
+    }
+
+    public void setTreasures(List<Treasure> treasures) {
+        this.treasures = treasures;
+    }
 
      public Long getId() {
         return id;
