@@ -28,6 +28,8 @@ public class Treasure extends AuditModel {
     @Size(min = 3, max = 100)
     private String title;
     
+    private String type;
+    
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "character_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -48,6 +50,14 @@ public class Treasure extends AuditModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+     public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Character getCharacter() {
