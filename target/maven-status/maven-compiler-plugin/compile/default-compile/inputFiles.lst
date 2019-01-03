@@ -3,9 +3,11 @@
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/TreasureController.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/CampaignRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Treasure.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/MonsterController.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/CharacterController.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/GameMaster.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/CampaignController.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Monster.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Encounter.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/EncounterController.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Campaign.java
@@ -13,6 +15,7 @@
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/GameMasterRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/EncounterRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/controller/GameMasterController.java
+/Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/MonsterRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/repository/CharacterRepository.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/exception/ResourceNotFoundException.java
 /Users/bghalami/turing/4module/gm_screen_backend/src/main/java/com/model/Character.java
