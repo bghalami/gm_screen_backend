@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -29,6 +31,19 @@ public class Monster extends AuditModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Encounter encounter;
+    
+    @OneToMany(cascade = CascadeType.ALL,
+               fetch = FetchType.LAZY,
+               mappedBy = "monster")
+    private List<LockedTreasure> lockedTreasures = new ArrayList<>();
+
+    public List<LockedTreasure> getLockedTreasures() {
+        return lockedTreasures;
+    }
+
+    public void setLockedTreasures(List<LockedTreasure> lockedTreasures) {
+        this.lockedTreasures = lockedTreasures;
+    }
 
     public Long getId() {
         return id;
