@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import org.apache.commons.lang3.*;
 import java.util.*;
@@ -34,10 +35,28 @@ public class Character extends AuditModel {
     
     protected Integer created;
     
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+                },
+                mappedBy = "characters")
+    @JsonIgnore
+    private List<Encounter> encounters = new ArrayList<>();
+
+    public List<Encounter> getEncounters() {
+        return encounters;
+    }
+
+    public void setEncounters(List<Encounter> encounters) {
+        this.encounters = encounters;
+    }
+    
     @OneToMany(cascade = CascadeType.ALL,
                fetch = FetchType.LAZY,
                mappedBy = "character")
     private List<Treasure> treasures = new ArrayList<>();
+    
 
     public List<Treasure> getTreasures() {
         return treasures;
