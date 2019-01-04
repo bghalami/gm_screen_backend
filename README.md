@@ -28,66 +28,71 @@ GMs:
 
 CAMPAIGNS:
 "GET": "/api/v1/game_masters/:id/campaigns"
-	- Shows all campaigns with name and ID (# of encounters?)
+	- Shows all campaigns with name and ID
 "POST": "/api/v1/game_masters/:id/campaigns"
-	- Creates campaign, takes “name”
+	- Creates campaign, takes “title”
 "GET": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id"
-	- Shows campaign with all encounters with name and ID (# of encounters?)
+	- Shows campaign with all encounters with title and ID 
 "PUT": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id"
-	- Edits campaign, takes “name”
+	- Edits campaign, takes “title”
 "DELETE": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id"
 	- Deletes campaign with id
 
 ENCOUNTERS:
 "GET": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters"
-	- Shows campaign and campaign encounters with id and name
+	- Shows campaign and campaign encounters with id and title
 "POST": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters"
 	- Creates encounter for specific campaign, takes “title”
 "GET": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id"
-	- Shows encounter with id, campaign_id, and name, shows characters in encounter with name and id, shows monsters in encounter with name and id
+	- Shows encounter with id, campaign_id, and title, shows characters in encounter with name and id and treasures, shows monsters in encounter with name and id and locked treasures
 "PUT": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id"
 	- Edits an encounter, takes “title”
 "DELETE": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id"
 	- Deletes an encounter
 
-"GET": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id/characters"
-	- Shows encounter with id and name, shows characters in encounter with name and id, on each character you see their treasure
 "POST": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id/characters/:id"
 	- Links a character to an encounter
 
 "GET":	"/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id/monsters"
 	- Shows encounter with id and name, shows monsters in encounter with name and id, on each monster you see their treasure(s)
 "POST": "/api/v1/game_masters/:gm_id/campaigns/:campaign_id/encounters/:encounter_id/monsters/:monster_id"
-	- Links a monster to an encounter
+	- Creates a monster on an encounter
 
 CHARACTERS:
 "GET": "/api/v1/characters/play_code/:code"
 	- Looks for player based on code, returns player
 
 "GET": "/api/v1/characters"
-	- Shows all characters with name, id
+	- Shows all characters with name, id, and treasures
 "POST": "/api/v1/characters"
 	- Creates new, empty character
-"PUT": "/api/v1/characters"
-	- Edits character (character creation page), takes name, (picture?)
-
+	
+"PUT": "/api/v1/characters/:id"
+	- Edits character (character creation page), takes name and role
 "GET": "/api/v1/characters/:id"
-	- Shows id, name, and treasures for one character (picture?)
+	- Shows id, name, and treasures for one character
 "POST": "/api/v1/characters/:id/treasures"
 	- Creates a treasure to be associated with that character
+"PUT": "/api/v1/characters/:id/treasures/:treasure_id"
+	- Edits a treasure associated with that character
+"DELETE": "/api/v1/characters/:id/treasures/:treasure_id"
+	- Deletes a treasure associated with that character
 
 MONSTERS:
 "GET": "/api/v1/monsters"
-	- Shows all monsters with name, id, and encounters_id
+	- Shows all monsters with title, id, and encounters_id
 "POST": "/api/v1/monsters"
-	- Creates new monster, takes name (picture?)
+	- Creates new monster, takes title
 "PUT": "/api/v1/monsters/:id"
-	- Edits monster, takes name, (picture?)
+	- Edits monster, takes title
 
 "GET": "/api/v1/monsters/:id"
-	- Shows id, name, and locked_treasures for one monster (picture?)
+	- Shows id, name, and locked_treasures for one monster
 "POST": "/api/v1/monsters/:id/locked_treasures"
-	- Creates a locked treasure to be associated with that monster, takes name (picture?)
+	- Creates a locked treasure to be associated with that monster, takes title
+"PUT": "/api/v1/monsters/:id/locked_treasures"
+	- Edits a locked treasure associated with that monster, takes title
+"DELETE": "/api/v1/game_masters/:gm_id/campaigns/:c_id/encounters/:e_id/monsters/:m_id/treasures/:lt_id"
 }
 ```
 
