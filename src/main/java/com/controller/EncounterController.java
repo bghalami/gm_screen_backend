@@ -7,6 +7,7 @@ package com.controller;
 
 import com.exception.ResourceNotFoundException;
 import com.model.Encounter;
+import com.repository.CharacterRepository;
 import com.repository.EncounterRepository;
 import com.repository.CampaignRepository;
 import com.repository.GameMasterRepository;
@@ -25,6 +26,9 @@ import java.util.Optional;
 public class EncounterController {
     @Autowired
     private EncounterRepository encounterRepository;
+    
+    @Autowired
+    private CharacterRepository characterRepository;
     
     @Autowired
     private CampaignRepository campaignRepository;
@@ -108,6 +112,31 @@ public class EncounterController {
                 .map(encounter -> {
                     encounterRepository.delete(encounter);
                     return ResponseEntity.ok().build();
+                }).orElseThrow(() -> new ResourceNotFoundException("Encounter not found with id " + encounterId));
+    }
+    
+    @PostMapping("/api/v1/game_masters/{gameMasterId}/campaigns/{campaignId}/encounters/{encounterId}/characters/{characterId}")
+    public Encounter addCharacter(@PathVariable Long gameMasterId,
+                                  @PathVariable Long campaignId,
+                                  @PathVariable Long encounterId,
+                                  @PathVariable Long characterId
+                                  ) {
+        if(!gameMasterRepository.existsById(gameMasterId)) {
+            throw new ResourceNotFoundException("GM not found with id " + gameMasterId);
+        }
+        if(!campaignRepository.existsById(campaignId)) {
+            throw new ResourceNotFoundException("Campaign not found with id " + campaignId);
+        }
+        if(!encounterRepository.existsById(encounterId)) {
+            throw new ResourceNotFoundException("Encounter not found with id " + encounterId);
+        }
+        return encounterRepository.findById(encounterId)
+                .map(encounter -> {
+                    return characterRepository.findById(characterId)
+                            .map(character -> {
+                                encounter.addCharacter(character);
+                                return encounterRepository.save(encounter);
+                            }).orElseThrow(() -> new ResourceNotFoundException("Character not found with id " + characterId));
                 }).orElseThrow(() -> new ResourceNotFoundException("Encounter not found with id " + encounterId));
     }
 }

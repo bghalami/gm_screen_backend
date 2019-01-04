@@ -63,6 +63,10 @@ public class Encounter extends AuditModel {
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
     }
+    
+    public void addCharacter(Character character) {
+        this.characters.add(character);
+    }
 
     public List<Monster> getMonsters() {
         return monsters;
