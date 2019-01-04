@@ -45,6 +45,28 @@ public class Encounter extends AuditModel {
                fetch = FetchType.LAZY,
                mappedBy = "encounter")
     private List<Monster> monsters = new ArrayList<>();
+    
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {
+                            CascadeType.PERSIST,
+                            CascadeType.MERGE
+                          })
+    @JoinTable(name = "encounter_characters",
+            joinColumns = { @JoinColumn(name = "encounter_id") },
+            inverseJoinColumns = { @JoinColumn(name = "character_id") })
+    private List<Character> characters = new ArrayList<>();
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
+    
+    public void addCharacter(Character character) {
+        this.characters.add(character);
+    }
 
     public List<Monster> getMonsters() {
         return monsters;
